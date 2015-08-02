@@ -19,7 +19,7 @@ namespace Sakuya_Aki
         private int sheight = rect.Height;
         byte slowdown = 0;
         byte movenon = 0;
-        //new定时器 Timer outer
+        //一些定时器
         private DispatcherTimer Timer = new DispatcherTimer();
         private DispatcherTimer outer = new DispatcherTimer();
         private DispatcherTimer mouser = new DispatcherTimer();
@@ -78,25 +78,66 @@ namespace Sakuya_Aki
                     isAction = false;
                     sleeptime = 10;
                     pic.IsHitTestVisible = false;
-                    if (Left > swidth - size * mainwindow.scale / 2)
+                    //旧的出界
+                    //pic.SetValue(Canvas.LeftProperty, mainwindow.rx);
+                    //pic.SetValue(Canvas.TopProperty, mainwindow.ry);
+                    //如果在右上角
+                    if (Left > swidth - size / 2 && Top < 0 - size / 4)
                     {
-                        //pic.SetValue(Canvas.LeftProperty, mainwindow.rx);
-                        //pic.SetValue(Canvas.TopProperty, mainwindow.ry);
-                        for(int i = 0; i < 16; i++)
+                        for (int i = 0; i < 16; i++)
+                        {
+                            sleeptime = 10;
+                            displayimg("48", -2, 2);
+                        }
+                    }
+                    //如果在右下
+                    else if (Left > swidth - size / 2 && Top > sheight - size / 1.1)
+                    {
+                        for (int i = 0; i < 16; i++)
+                        {
+                            sleeptime = 10;
+                            displayimg("48", -2, -2);
+                        }
+                    }
+                    //如果在左下
+                    else if (Left < 0 - size / 2 && Top > sheight - size / 1.1)
+                    {
+                        for (int i = 0; i < 16; i++)
+                        {
+                            sleeptime = 10;
+                            displayimg("48", 2, -2);
+                        }
+                    }
+                    //如果在左上
+                    else if (Left < 0 - size / 2 && Top < 0 - size / 4)
+                    {
+                        for (int i = 0; i < 16; i++)
+                        {
+                            sleeptime = 10;
+                            displayimg("48", 2, 2);
+                        }
+                    }
+                    //如果在右边
+                    else if (Left > swidth - size / 2)
+                    {
+
+                        for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", -2, 0);
                         }
                     }
-                    else if (Top > sheight - size * mainwindow.scale / 1.1)
+                    //如果在下面
+                    else if (Top > sheight - size / 1.1)
                     {
-                        for(int i = 0; i < 24; i++)
+                        for (int i = 0; i < 24; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 0, -2);
                         }
                     }
-                    else if (Left < 0 - size * mainwindow.scale / 2)
+                    //如果在左边
+                    else if (Left < 0 - size / 2)
                     {
                         for (int i = 0; i < 24; i++)
                         {
@@ -104,7 +145,8 @@ namespace Sakuya_Aki
                             displayimg("48", 2, 0);
                         }
                     }
-                    else if (Top < 0 - size * mainwindow.scale / 4)
+                    //如果在上边
+                    else if (Top < 0 - size / 4)
                     {
                         for (int i = 0; i < 16; i++)
                         {
