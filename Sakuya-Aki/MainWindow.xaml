@@ -1,0 +1,39 @@
+﻿<Window x:Name="Sakuya" Topmost="True" x:Class="Sakuya_Aki.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:local="clr-namespace:Sakuya_Aki"
+        Title="Sakuya" Height="720" Width="1280" WindowStartupLocation="CenterScreen" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" ShowInTaskbar="False">
+    <!--Background="{x:Null}" AllowsTransparency="True" WindowStyle="None"-->
+    <Grid>
+        <Canvas Name="canvas">
+            <Image UseLayoutRounding="True" MouseLeftButtonDown="pic_MouseLeftButtonDown" MouseLeftButtonUp="pic_MouseLeftButtonUp" Name="pic" Height="128" Width="128" IsHitTestVisible="True" ToolTip="萌萌的桜">
+                <!--UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor"-->
+                <ibehavior:Interaction.Behaviors>
+                    <local:MyBehavior></local:MyBehavior>
+                </ibehavior:Interaction.Behaviors>
+                <Image.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="投食">
+                            <MenuItem Header="饥饿度+10" Click="HungAdd"/>
+                            <MenuItem Header="清洁度+10" Click="CleanerAdd"/>
+                            <MenuItem Header="好感度+10" Click="SklAdd"/>
+                            <MenuItem Header="全部+10" Click="AddAll"/>
+                            <MenuItem Header="恢复初始值" Click="ResetState"/>
+                        </MenuItem>
+                        <MenuItem Header="石头剪刀布">
+                            <MenuItem Header="石头" Click="Game0st"/>
+                            <MenuItem Header="剪刀" Click="Game0jd"/>
+                            <MenuItem Header="布" Click="Game0bu"/>
+                        </MenuItem>
+                    </ContextMenu>
+                </Image.ContextMenu>
+            </Image>
+            <Label Name="tip" Visibility="Hidden">
+                <Label.Background>
+                    <ImageBrush ImageSource="/img/tip.png"/>
+                </Label.Background>
+            </Label>
+        </Canvas>
+    </Grid>
+</Window>
