@@ -28,7 +28,7 @@ namespace Sakuya_Aki
         int mousePointX0;
         int mousePointX1;
         byte skldown = 0;
-        bool isAction = true;
+        bool picisAction = true;
 
         public Picctrl(MainWindow mainwindow)
         {
@@ -79,7 +79,7 @@ namespace Sakuya_Aki
                     //pic.SetValue(Canvas.LeftProperty, mainwindow.rx);
                     //pic.SetValue(Canvas.TopProperty, mainwindow.ry);
                     //如果在右上角
-                    if (Left > swidth - size / 2 && Top < 0 - size / 2)
+                    if (Left > swidth - size / 2 && Top < 0 - size / 4)
                     {
                         imgctrlcolse();
                         for (int i = 0; i < 16; i++)
@@ -90,7 +90,7 @@ namespace Sakuya_Aki
                         imgctrlstart();
                     }
                     //如果在右下
-                    else if (Left > swidth - size / 2 && Top > sheight - size / 0.6)
+                    else if (Left > swidth - size / 2 && Top > sheight - size / 1.1)
                     {
                         imgctrlcolse();
                         for (int i = 0; i < 16; i++)
@@ -226,7 +226,7 @@ namespace Sakuya_Aki
         {
             if (mainwindow.isClick==false)
             {
-                if (isAction)
+                if (picisAction)
                 {
                     Timer.Stop();
                     int way = new Random().Next(0, 50);
@@ -586,7 +586,7 @@ namespace Sakuya_Aki
             imgctrl.Abort();
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = false;
-            isAction = false;
+            picisAction = false;
             
         }//关闭图片切换
         private void imgctrlstart()
@@ -594,7 +594,7 @@ namespace Sakuya_Aki
             //imgctrl.Start();
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = true;
-            isAction = true;
+            picisAction = true;
             Timer.Start();
         }//开启图片切换
     }
