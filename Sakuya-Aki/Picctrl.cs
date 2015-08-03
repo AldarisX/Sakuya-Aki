@@ -28,7 +28,6 @@ namespace Sakuya_Aki
         int mousePointX0;
         int mousePointX1;
         byte skldown = 0;
-        bool picisAction = true;
 
         public Picctrl(MainWindow mainwindow)
         {
@@ -226,281 +225,278 @@ namespace Sakuya_Aki
         {
             if (mainwindow.isClick==false)
             {
-                if (picisAction)
+                Timer.Stop();
+                int way = new Random().Next(0, 50);
+                //way = 2;
+                switch (way)
                 {
-                    Timer.Stop();
-                    int way = new Random().Next(0, 50);
-                    //way = 2;
-                    switch (way)
-                    {
-                        case 0:
-                            sleeptime = 300;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                displayimg("1", 2, 0);
-                                displayimg("2", 2, 0);
-                                displayimg("1", 2, 0);
-                                displayimg("3", 2, 0);
-                            }
-                            break;
-                        case 1:
-                            sleeptime = 100;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                displayimg("1", 4, 0);
-                                displayimg("2", 4, 0);
-                                displayimg("1", 4, 0);
-                                displayimg("3", 4, 0);
-                            }
-                            break;
-                        case 2:
-                            sleeptime = 100;
-                            for (int i = 0; i < 2; i++)
-                            {
-                                displayimg("1", 8, 0);
-                                displayimg("2", 8, 0);
-                                displayimg("1", 8, 0);
-                                displayimg("3", 8, 0);
-                            }
-                            break;
-                        case 3:
-                            sleeptime = 12500;
-                            displayimg("11", 0, 0);
-                            break;
-                        case 4:
-                            sleeptime = 12500;
-                            displayimg("26", 0, 0);
-                            break;
-                        case 5:
-                            sleeptime = 12500;
-                            displayimg("11", 0, 0);
-                            sleeptime = 6250;
-                            displayimg("26", 0, 0);
-                            break;
-                        case 6:
-                            sleeptime = 250;
-                            displayimg("26", 0, 0);
-                            displayimg("15", 0, 0);
-                            displayimg("27", 0, 0);
-                            displayimg("16", 0, 0);
-                            displayimg("28", 0, 0);
-                            displayimg("17", 0, 0);
-                            displayimg("29", 0, 0);
-                            displayimg("11", 0, 0);
-                            break;
-                        case 7:
-                            sleeptime = 12500;
-                            displayimg("30", 0, 0);
-                            break;
-                        case 8:
-                            sleeptime = 12500;
-                            displayimg("31", 0, 0);
-                            break;
-                        case 9:
-                            sleeptime = 1250;
-                            displayimg("30", 0, 0);
-                            displayimg("31", 0, 0);
-                            break;
-                        case 10:
-                            sleeptime = 250;
-                            displayimg("31", 0, 0);
-                            sleeptime = 750;
-                            displayimg("32", 0, 0);
-                            sleeptime = 250;
-                            displayimg("31", 0, 0);
-                            sleeptime = 750;
-                            displayimg("33", 0, 0);
-                            break;
-                        case 11:
-                            sleeptime = 12500;
-                            displayimg("21", 0, 0);
-                            break;
-                        case 12:
-                            sleeptime = 1400;
-                            displayimg("20", 0, 0);
-                            sleeptime = 200;
-                            displayimg("20", 2, 0);
-                            displayimg("21", 2, 0);
-                            displayimg("21", 1, 0);
-                            sleeptime = 1200;
-                            displayimg("21", 0, 0);
-                            break;
-                        case 13:
-                            sleeptime = 12500;
-                            displayimg("23", 0, 0);
-                            break;
-                        case 14:
-                            sleeptime = 800;
-                            displayimg("25", 0, 0);
-                            sleeptime = 200;
-                            displayimg("25", 1, 0);
-                            displayimg("23", 1, 0);
-                            displayimg("24", 1, 0);
-                            sleeptime = 800;
-                            displayimg("24", 0, 0);
-                            sleeptime = 200;
-                            displayimg("24", 2, 0);
-                            displayimg("23", 2, 0);
-                            displayimg("25", 2, 0);
-                            break;
-                        case 15:
-                            sleeptime = 12500;
-                            displayimg("13", 0, 0);
-                            break;
-                        case 16:
-                            sleeptime = 800;
-                            displayimg("14", 0, 0);
-                            sleeptime = 200;
-                            displayimg("14", 0, 1);
-                            displayimg("12", 0, 1);
-                            displayimg("13", 0, 1);
-                            sleeptime = 800;
-                            displayimg("13", 0, 0);
-                            sleeptime = 200;
-                            displayimg("13", 0, 2);
-                            displayimg("12", 0, 2);
-                            displayimg("14", 0, 2);
-                            break;
-                        case 17:
-                            sleeptime = 800;
-                            displayimg("14", 0, 0);
-                            sleeptime = 200;
-                            displayimg("14", 0, -2);
-                            displayimg("12", 0, -2);
-                            displayimg("13", 0, -2);
-                            sleeptime = 800;
-                            displayimg("13", 0, 0);
-                            sleeptime = 200;
-                            displayimg("13", 0, -1);
-                            displayimg("12", 0, -1);
-                            displayimg("14", 0, -1);
-                            break;
-                        //case 18:
-                        //sleeptime = 12500;
-                        //displayimg("36", 0, 0);
-                        //displayimg("34", 0, 0);
-                        //displayimg("35", 0, 0);
-                        //displayimg("34", 0, 0);
-                        //displayimg("36", 0, 0);
-                        //break;
-                        //case 19:
-                        //sleeptime = 300;
-                        //displayimg("36", 0, 0);
-                        //break;
-                        case 20:
-                            sleeptime = 2000;
-                            displayimg("37", 0, 0);
-                            break;
-                        case 21:
-                            sleeptime = 12500;
-                            displayimg("22", 0, 0);
-                            break;
-                        //case 22:
-                        //        sleeptime = 50;
-                        //        for (int i = 0; i < 20; i++) 
-                        //        {
-                        //            displayimg("4", 0, 2);
-                        //        } 
-                        //        break;
-                        case 23:
-                            sleeptime = 200;
-                            displayimg("18", 0, 0);
-                            displayimg("19", 0, 0);
-                            break;
-                        case 24:
-                            sleeptime = 400;
-                            displayimg("19", 8, 0);
-                            sleeptime = 200;
-                            displayimg("18", 4, 0);
-                            displayimg("20", 2, 0);
-                            sleeptime = 500;
-                            displayimg("20", 0, 0);
-                            sleeptime = 200;
-                            displayimg("19", 4, 0);
-                            break;
-                        case 25:
-                            sleeptime = 250;
-                            displayimg("9", 0, 0);
-                            break;
-                        case 26:
-                            sleeptime = 250;
-                            displayimg("7", 0, 0);
-                            break;
-                        case 27:
-                            sleeptime = 250;
-                            displayimg("1", 0, 0);
-                            break;
-                        case 28:
-                            sleeptime = 250;
-                            displayimg("8", 0, 0);
-                            break;
-                        case 29:
-                            sleeptime = 250;
-                            displayimg("10", 0, 0);
-                            break;
-                        case 30:
-                            sleeptime = 250;
+                    case 0:
+                        sleeptime = 300;
+                        for (int i = 0; i < 2; i++)
+                        {
+                            displayimg("1", 2, 0);
+                            displayimg("2", 2, 0);
+                            displayimg("1", 2, 0);
+                            displayimg("3", 2, 0);
+                        }
+                        break;
+                    case 1:
+                        sleeptime = 100;
+                        for (int i = 0; i < 2; i++)
+                        {
+                            displayimg("1", 4, 0);
+                            displayimg("2", 4, 0);
+                            displayimg("1", 4, 0);
+                            displayimg("3", 4, 0);
+                        }
+                        break;
+                    case 2:
+                        sleeptime = 100;
+                        for (int i = 0; i < 2; i++)
+                        {
+                            displayimg("1", 8, 0);
+                            displayimg("2", 8, 0);
+                            displayimg("1", 8, 0);
+                            displayimg("3", 8, 0);
+                        }
+                        break;
+                    case 3:
+                        sleeptime = 12500;
+                        displayimg("11", 0, 0);
+                        break;
+                    case 4:
+                        sleeptime = 12500;
+                        displayimg("26", 0, 0);
+                        break;
+                    case 5:
+                        sleeptime = 12500;
+                        displayimg("11", 0, 0);
+                        sleeptime = 6250;
+                        displayimg("26", 0, 0);
+                        break;
+                    case 6:
+                        sleeptime = 250;
+                        displayimg("26", 0, 0);
+                        displayimg("15", 0, 0);
+                        displayimg("27", 0, 0);
+                        displayimg("16", 0, 0);
+                        displayimg("28", 0, 0);
+                        displayimg("17", 0, 0);
+                        displayimg("29", 0, 0);
+                        displayimg("11", 0, 0);
+                        break;
+                    case 7:
+                        sleeptime = 12500;
+                        displayimg("30", 0, 0);
+                        break;
+                    case 8:
+                        sleeptime = 12500;
+                        displayimg("31", 0, 0);
+                        break;
+                    case 9:
+                        sleeptime = 1250;
+                        displayimg("30", 0, 0);
+                        displayimg("31", 0, 0);
+                        break;
+                    case 10:
+                        sleeptime = 250;
+                        displayimg("31", 0, 0);
+                        sleeptime = 750;
+                        displayimg("32", 0, 0);
+                        sleeptime = 250;
+                        displayimg("31", 0, 0);
+                        sleeptime = 750;
+                        displayimg("33", 0, 0);
+                        break;
+                    case 11:
+                        sleeptime = 12500;
+                        displayimg("21", 0, 0);
+                        break;
+                    case 12:
+                        sleeptime = 1400;
+                        displayimg("20", 0, 0);
+                        sleeptime = 200;
+                        displayimg("20", 2, 0);
+                        displayimg("21", 2, 0);
+                        displayimg("21", 1, 0);
+                        sleeptime = 1200;
+                        displayimg("21", 0, 0);
+                        break;
+                    case 13:
+                        sleeptime = 12500;
+                        displayimg("23", 0, 0);
+                        break;
+                    case 14:
+                        sleeptime = 800;
+                        displayimg("25", 0, 0);
+                        sleeptime = 200;
+                        displayimg("25", 1, 0);
+                        displayimg("23", 1, 0);
+                        displayimg("24", 1, 0);
+                        sleeptime = 800;
+                        displayimg("24", 0, 0);
+                        sleeptime = 200;
+                        displayimg("24", 2, 0);
+                        displayimg("23", 2, 0);
+                        displayimg("25", 2, 0);
+                        break;
+                    case 15:
+                        sleeptime = 12500;
+                        displayimg("13", 0, 0);
+                        break;
+                    case 16:
+                        sleeptime = 800;
+                        displayimg("14", 0, 0);
+                        sleeptime = 200;
+                        displayimg("14", 0, 1);
+                        displayimg("12", 0, 1);
+                        displayimg("13", 0, 1);
+                        sleeptime = 800;
+                        displayimg("13", 0, 0);
+                        sleeptime = 200;
+                        displayimg("13", 0, 2);
+                        displayimg("12", 0, 2);
+                        displayimg("14", 0, 2);
+                        break;
+                    case 17:
+                        sleeptime = 800;
+                        displayimg("14", 0, 0);
+                        sleeptime = 200;
+                        displayimg("14", 0, -2);
+                        displayimg("12", 0, -2);
+                        displayimg("13", 0, -2);
+                        sleeptime = 800;
+                        displayimg("13", 0, 0);
+                        sleeptime = 200;
+                        displayimg("13", 0, -1);
+                        displayimg("12", 0, -1);
+                        displayimg("14", 0, -1);
+                        break;
+                    //case 18:
+                    //sleeptime = 12500;
+                    //displayimg("36", 0, 0);
+                    //displayimg("34", 0, 0);
+                    //displayimg("35", 0, 0);
+                    //displayimg("34", 0, 0);
+                    //displayimg("36", 0, 0);
+                    //break;
+                    //case 19:
+                    //sleeptime = 300;
+                    //displayimg("36", 0, 0);
+                    //break;
+                    case 20:
+                        sleeptime = 2000;
+                        displayimg("37", 0, 0);
+                        break;
+                    case 21:
+                        sleeptime = 12500;
+                        displayimg("22", 0, 0);
+                        break;
+                    //case 22:
+                    //        sleeptime = 50;
+                    //        for (int i = 0; i < 20; i++) 
+                    //        {
+                    //            displayimg("4", 0, 2);
+                    //        } 
+                    //        break;
+                    case 23:
+                        sleeptime = 200;
+                        displayimg("18", 0, 0);
+                        displayimg("19", 0, 0);
+                        break;
+                    case 24:
+                        sleeptime = 400;
+                        displayimg("19", 8, 0);
+                        sleeptime = 200;
+                        displayimg("18", 4, 0);
+                        displayimg("20", 2, 0);
+                        sleeptime = 500;
+                        displayimg("20", 0, 0);
+                        sleeptime = 200;
+                        displayimg("19", 4, 0);
+                        break;
+                    case 25:
+                        sleeptime = 250;
+                        displayimg("9", 0, 0);
+                        break;
+                    case 26:
+                        sleeptime = 250;
+                        displayimg("7", 0, 0);
+                        break;
+                    case 27:
+                        sleeptime = 250;
+                        displayimg("1", 0, 0);
+                        break;
+                    case 28:
+                        sleeptime = 250;
+                        displayimg("8", 0, 0);
+                        break;
+                    case 29:
+                        sleeptime = 250;
+                        displayimg("10", 0, 0);
+                        break;
+                    case 30:
+                        sleeptime = 250;
+                        displayimg("5", 0, 0);
+                        displayimg("6", 0, 0);
+                        displayimg("5", 0, 0);
+                        displayimg("6", 0, 0);
+                        sleeptime = 2500;
+                        displayimg("1", 0, 0);
+                        sleeptime = 250;
+                        for (int i = 0; i < 4; i++)
+                        {
                             displayimg("5", 0, 0);
                             displayimg("6", 0, 0);
+                        }
+                        sleeptime = 5000;
+                        displayimg("1", 0, 0);
+                        sleeptime = 250;
+                        for (int i = 0; i < 4; i++)
+                        {
                             displayimg("5", 0, 0);
                             displayimg("6", 0, 0);
-                            sleeptime = 2500;
-                            displayimg("1", 0, 0);
-                            sleeptime = 250;
-                            for (int i = 0; i < 4; i++)
-                            {
-                                displayimg("5", 0, 0);
-                                displayimg("6", 0, 0);
-                            }
-                            sleeptime = 5000;
-                            displayimg("1", 0, 0);
-                            sleeptime = 250;
-                            for (int i = 0; i < 4; i++)
-                            {
-                                displayimg("5", 0, 0);
-                                displayimg("6", 0, 0);
-                            }
-                            sleeptime = 100;
-                            for (int i = 0; i < 4; i++)
-                            {
-                                displayimg("5", 0, 0);
-                                displayimg("6", 0, 0);
-                            }
-                            break;
-                        case 31:
-                            sleeptime = 800;
-                            displayimg("1", 0, 0);
-                            sleeptime = 200;
-                            displayimg("38", 0, 0);
-                            sleeptime = 2000;
-                            displayimg("39", 0, 0);
-                            displayimg("40", 0, 0);
-                            displayimg("41", 0, 0);
-                            break;
-                        case 32:
-                            sleeptime = 50;
-                            displayimg("9", -20, -20);
-                            displayimg("9", -20, -10);
-                            displayimg("9", -20, -5);
-                            break;
-                        case 33:
-                            sleeptime = 250;
-                            displayimg("42", 0, 0);
-                            sleeptime = 100;
-                            displayimg("43", 0, 0);
-                            displayimg("44", 0, 0);
-                            sleeptime = 250;
-                            displayimg("45", 0, 0);
-                            sleeptime = 1000;
-                            displayimg("46", 0, 0);
-                            break;
-                        default:
-                            displayimg("1", 0, 0);
-                            break;
-                    }
-                    Timer.Start();
-                    sleeptime = 500;
+                        }
+                        sleeptime = 100;
+                        for (int i = 0; i < 4; i++)
+                        {
+                            displayimg("5", 0, 0);
+                            displayimg("6", 0, 0);
+                        }
+                        break;
+                    case 31:
+                        sleeptime = 800;
+                        displayimg("1", 0, 0);
+                        sleeptime = 200;
+                        displayimg("38", 0, 0);
+                        sleeptime = 2000;
+                        displayimg("39", 0, 0);
+                        displayimg("40", 0, 0);
+                        displayimg("41", 0, 0);
+                        break;
+                    case 32:
+                        sleeptime = 50;
+                        displayimg("9", -20, -20);
+                        displayimg("9", -20, -10);
+                        displayimg("9", -20, -5);
+                        break;
+                    case 33:
+                        sleeptime = 250;
+                        displayimg("42", 0, 0);
+                        sleeptime = 100;
+                        displayimg("43", 0, 0);
+                        displayimg("44", 0, 0);
+                        sleeptime = 250;
+                        displayimg("45", 0, 0);
+                        sleeptime = 1000;
+                        displayimg("46", 0, 0);
+                        break;
+                    default:
+                        displayimg("1", 0, 0);
+                        break;
                 }
+                Timer.Start();
+                sleeptime = 500;
             }
         }//图片控制，里面的内容非常无聊
         private void displayimg(string imgnum, int x, int y)
@@ -586,7 +582,6 @@ namespace Sakuya_Aki
             imgctrl.Abort();
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = false;
-            picisAction = false;
             
         }//关闭图片切换
         private void imgctrlstart()
@@ -594,7 +589,6 @@ namespace Sakuya_Aki
             //imgctrl.Start();
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = true;
-            picisAction = true;
             Timer.Start();
         }//开启图片切换
     }
