@@ -200,28 +200,21 @@ namespace Sakuya_Aki
             int swidth = mainwindow.swidth;
             int sheight = mainwindow.sheight;
             double length = tipcon.Length * mainwindow.tip.FontSize * mainwindow.scale * 1.05;
-            //double length = mainwindow.tip.ActualWidth * mainwindow.size * mainwindow.scale * 0.0121;
             //如果在右上角
             if (picy - mainwindow.tip.FontSize * mainwindow.scale < 0 && picx + length > swidth)
             {
-                //mainwindow.tipx = mainwindow.picx - length / mainwindow.size * mainwindow.scale;
-                //mainwindow.tipy = mainwindow.picy + size + mainwindow.size * mainwindow.scale * 0.04;
                 mainwindow.tipx = mainwindow.picx - length / 2.5;
                 mainwindow.tipy = 16;
             }
             //如果在右边
             else if (picx + length > swidth)
             {
-                //mainwindow.tipx = mainwindow.picx - length / mainwindow.size * mainwindow.scale;
-                //mainwindow.tipy = mainwindow.picy - mainwindow.size * mainwindow.scale * 0.04;
                 mainwindow.tipx = mainwindow.picx - length / 2.5;
                 mainwindow.tipy = mainwindow.picy - mainwindow.size * mainwindow.scale * 0.04;
             }
             //如果在上边
             else if (picy - mainwindow.tip.FontSize * mainwindow.scale < 0)
             {
-                //mainwindow.tipx = mainwindow.picx;
-                //mainwindow.tipy = mainwindow.picy + size + mainwindow.size * mainwindow.scale * 0.04;
                 mainwindow.tipx = mainwindow.picx + mainwindow.size * mainwindow.scale * 0.80;
                 mainwindow.tipy = 16;
             }
