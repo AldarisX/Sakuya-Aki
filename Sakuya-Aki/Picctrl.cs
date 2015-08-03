@@ -43,7 +43,7 @@ namespace Sakuya_Aki
         public void starttimer()
         {
             Timer.Tick += new EventHandler(Timer_Tick);
-            Timer.Interval = new TimeSpan(0, 0, 0, 0, sleeptime);
+            Timer.Interval = new TimeSpan(0, 0, 0, 0, 10);
             Timer.Start();
             outer.Tick += new EventHandler(outArea);
             outer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -75,88 +75,97 @@ namespace Sakuya_Aki
                     double Left = (double)pic.GetValue(Canvas.LeftProperty);
                     double Top = (double)pic.GetValue(Canvas.TopProperty);
                     //if里的是边界的判定
-                    isAction = false;
-                    sleeptime = 10;
-                    pic.IsHitTestVisible = false;
                     //旧的出界
                     //pic.SetValue(Canvas.LeftProperty, mainwindow.rx);
                     //pic.SetValue(Canvas.TopProperty, mainwindow.ry);
                     //如果在右上角
-                    if (Left > swidth - size / 2 && Top < 0 - size / 4)
+                    if (Left > swidth - size / 2 && Top < 0 - size / 2)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", -2, 2);
                         }
+                        imgctrlstart();
                     }
                     //如果在右下
-                    else if (Left > swidth - size / 2 && Top > sheight - size / 1.1)
+                    else if (Left > swidth - size / 2 && Top > sheight - size / 0.6)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", -2, -2);
                         }
+                        imgctrlstart();
                     }
                     //如果在左下
                     else if (Left < 0 - size / 2 && Top > sheight - size / 1.1)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 2, -2);
                         }
+                        imgctrlstart();
                     }
                     //如果在左上
                     else if (Left < 0 - size / 2 && Top < 0 - size / 4)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 2, 2);
                         }
+                        imgctrlstart();
                     }
                     //如果在右边
                     else if (Left > swidth - size / 2)
                     {
-
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", -2, 0);
                         }
+                        imgctrlstart();
                     }
                     //如果在下面
                     else if (Top > sheight - size / 1.1)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 24; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 0, -2);
                         }
+                        imgctrlstart();
                     }
                     //如果在左边
                     else if (Left < 0 - size / 2)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 24; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 2, 0);
                         }
+                        imgctrlstart();
                     }
                     //如果在上边
                     else if (Top < 0 - size / 4)
                     {
+                        imgctrlcolse();
                         for (int i = 0; i < 16; i++)
                         {
                             sleeptime = 10;
                             displayimg("48", 0, 2);
                         }
+                        imgctrlstart();
                     }
-                    isAction = true;
-                    sleeptime = 500;
-                    pic.IsHitTestVisible = true;
                 }));
             }
         }//关于出界的方法
@@ -571,5 +580,22 @@ namespace Sakuya_Aki
             Image pic = mainwindow.pic;
             pic.Source = new BitmapImage(new Uri("/img/frame/shime1.png", UriKind.Relative));
         }
+        private void imgctrlcolse()
+        {
+            Timer.Stop();
+            imgctrl.Abort();
+            Image pic = mainwindow.pic;
+            pic.IsHitTestVisible = false;
+            isAction = false;
+            
+        }//关闭图片切换
+        private void imgctrlstart()
+        {
+            //imgctrl.Start();
+            Image pic = mainwindow.pic;
+            pic.IsHitTestVisible = true;
+            isAction = true;
+            Timer.Start();
+        }//开启图片切换
     }
 }
