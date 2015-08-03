@@ -90,8 +90,6 @@ namespace Sakuya_Aki
             exit.Click += new EventHandler(exit_Click);
             System.Windows.Forms.MenuItem loadxxx = new System.Windows.Forms.MenuItem("查看桜酱的状态");
             loadxxx.Click += new EventHandler(loadstate);
-            //System.Windows.Forms.MenuItem tip = new System.Windows.Forms.MenuItem("tip");D:\Aldaris Data\C#\WPF DEMO TEST001\WPF DEMO TEST001\App.xaml
-            //tip.Click += new EventHandler(tips);
 
             //关联托盘控件
             System.Windows.Forms.MenuItem[] childen = new System.Windows.Forms.MenuItem[] { loadxxx, menu, setting, exit };
@@ -102,11 +100,6 @@ namespace Sakuya_Aki
             notifystate.Interval = new TimeSpan(0, 1, 0);
             notifystate.Start();
         }
-        //private void tips(object sender, EventArgs e)
-        //{
-        //    mainwindow.displaytips("test test test test", 2000);
-            
-        //}
         private void AboutMe(object sender, EventArgs e)
         {
             System.Windows.MessageBox.Show("由Aldaris&吉祥物编写，鸭纸绘制");
@@ -203,9 +196,6 @@ namespace Sakuya_Aki
         }//Aki红
         private void setcolorTianyi(object sender, EventArgs e)
         {
-            //mainwindow.colorR = 90;
-            //mainwindow.colorG = 200;
-            //mainwindow.colorB = 255;
             mainwindow.colorR = 51;
             mainwindow.colorG = 204;
             mainwindow.colorB = 255;
