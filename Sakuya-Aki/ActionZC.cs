@@ -15,7 +15,7 @@ namespace Sakuya_Aki
             //Console.WriteLine("Game" + Akix);
             Random rd = new Random();
             int result = rd.Next(0, 3);
-            //改判
+            //强行增加胜率
             int Sakuya = rd.Next(0, 8);
             //Sakuya = 5;
             if (Sakuya <= 3)
