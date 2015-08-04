@@ -15,6 +15,7 @@ namespace Sakuya_Aki
         private DateTime BeginTime;
         private DateTime EndTime;
         private DispatcherTimer notifystate = new DispatcherTimer();
+        private System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
 
         public BackGroundShell(MainWindow mainwindow)
         {
@@ -83,7 +84,10 @@ namespace Sakuya_Aki
             aboutme.Click += new EventHandler(AboutMe);
             System.Windows.Forms.MenuItem reset = new System.Windows.Forms.MenuItem("重置桌桜酱的位置");
             reset.Click += new EventHandler(resetPic);
-            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, aboutme, reset, });
+            //System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动~");
+            picmove.Checked = false;
+            picmove.Click += new EventHandler(picmovechange);
+            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, aboutme, reset, });
 
             //设置单菜单项
             System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
@@ -118,7 +122,7 @@ namespace Sakuya_Aki
                 Environment.Exit(0);
             }
         }//退出的方法
-        private void notifyIcon_MouseClick(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -177,6 +181,21 @@ namespace Sakuya_Aki
         {
             mainwindow.resetstate();
         }//admin
+        private void picmovechange(object sender, EventArgs e)
+        {
+            //如果没有开启禁止移动
+            if (!picmove.Checked)
+            {
+                picmove.Checked = true;
+                mainwindow.picmove("disable");
+            }
+            //如果开启了禁止移动
+            else
+            {
+                picmove.Checked = false;
+                mainwindow.picmove("enable");
+            }
+        }
         private void setlunchtiptime(object sender, EventArgs e)
         {
             mainwindow.tiptype = "lunchtiptime";

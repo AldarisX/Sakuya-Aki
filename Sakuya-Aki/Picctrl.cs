@@ -24,10 +24,11 @@ namespace Sakuya_Aki
         private DispatcherTimer outer = new DispatcherTimer();
         private DispatcherTimer mouser = new DispatcherTimer();
         private DispatcherTimer mousePoint = new DispatcherTimer();
-        Thread imgctrl;
-        int mousePointX0;
-        int mousePointX1;
-        byte skldown = 0;
+        private Thread imgctrl;
+        private int mousePointX0;
+        private int mousePointX1;
+        private byte skldown = 0;
+        public bool picisMove = true;
 
         public Picctrl(MainWindow mainwindow)
         {
@@ -42,7 +43,7 @@ namespace Sakuya_Aki
         public void starttimer()
         {
             Timer.Tick += new EventHandler(Timer_Tick);
-            Timer.Interval = new TimeSpan(0, 0, 0, 0, 10);
+            Timer.Interval = new TimeSpan(0, 0, 0, 0, 100);
             Timer.Start();
             outer.Tick += new EventHandler(outArea);
             outer.Interval = new TimeSpan(0, 0, 0, 0, 200);
@@ -227,7 +228,7 @@ namespace Sakuya_Aki
             {
                 Timer.Stop();
                 int way = new Random().Next(0, 50);
-                //way = 2;
+                way = 2;
                 switch (way)
                 {
                     case 0:
@@ -513,26 +514,28 @@ namespace Sakuya_Aki
 
                 //    }));
                 //上面注释的是为了解决其他线程占用问题
-                pic.Dispatcher.Invoke(new Action(delegate { pic.Source = new BitmapImage(new Uri(img, UriKind.Relative)); }));
-                DoEvents();
-                x = x * 3;
-                y = y * 3;
-                pic.Dispatcher.Invoke(new Action(delegate
-                {
-                    double Left = (double)pic.GetValue(Canvas.LeftProperty);
-                    double Top = (double)pic.GetValue(Canvas.TopProperty);
-                    //这里出界的判定还是留着吧
-                    //if (Left > swidth - size | Top > sheight - size | Left < 0 | Top < 0)
-                    //{
-                    //    pic.SetValue(Canvas.LeftProperty, (double)mainwindow.rx);
-                    //    pic.SetValue(Canvas.TopProperty, (double)mainwindow.ry);
-                    //}
-                    //else
-                    //{
-                        pic.SetValue(Canvas.LeftProperty, (double)Left + x);
-                        pic.SetValue(Canvas.TopProperty, (double)Top + y);
-                    //}
-                }));
+                
+                    pic.Dispatcher.Invoke(new Action(delegate { pic.Source = new BitmapImage(new Uri(img, UriKind.Relative)); }));
+                    DoEvents();
+                    x = x * 3;
+                    y = y * 3;
+                    pic.Dispatcher.Invoke(new Action(delegate
+                    {
+                        double Left = (double)pic.GetValue(Canvas.LeftProperty);
+                        double Top = (double)pic.GetValue(Canvas.TopProperty);
+                        //如果开启了移动
+                        if (picisMove)
+                        {
+                            pic.SetValue(Canvas.LeftProperty, Left + x);
+                            pic.SetValue(Canvas.TopProperty, Top + y);
+                        }
+                        //如果没有开启移动
+                        else
+                        {
+                            pic.SetValue(Canvas.LeftProperty, Left);
+                            pic.SetValue(Canvas.TopProperty, Top);
+                        }
+                    }));
                 DoEvents();
             } 
         }//更换图片的方法

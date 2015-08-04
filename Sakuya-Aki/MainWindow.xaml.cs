@@ -340,6 +340,17 @@ namespace Sakuya_Aki
         {
             statectrl.resetstate();
         }//admin
+        public void picmove(string tf)
+        {
+            if (tf == "disable")
+            {
+                picctrl.picisMove = false;
+            }
+            else if (tf == "enable")
+            {
+                picctrl.picisMove = true;
+            }
+        }
         public static void doevents()
         {
             DispatcherFrame frame = new DispatcherFrame(true);
