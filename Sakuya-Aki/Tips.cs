@@ -39,7 +39,7 @@ namespace Sakuya_Aki
             timecheck.Interval = new TimeSpan(0, 1, 0);
             timecheck.Start();
             tipscheck.Tick += new EventHandler(sometips);
-            tipscheck.Interval = new TimeSpan(0, 0, 3);
+            tipscheck.Interval = new TimeSpan(0, 0, 31);
             tipscheck.Start();
         }
         public void firsttime()

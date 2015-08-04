@@ -195,7 +195,7 @@ namespace Sakuya_Aki
                 picmove.Checked = false;
                 mainwindow.picmove("enable");
             }
-        }
+        }//允许移动的操作
         private void setlunchtiptime(object sender, EventArgs e)
         {
             mainwindow.tiptype = "lunchtiptime";

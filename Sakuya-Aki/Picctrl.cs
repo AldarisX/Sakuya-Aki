@@ -228,7 +228,7 @@ namespace Sakuya_Aki
             {
                 Timer.Stop();
                 int way = new Random().Next(0, 50);
-                way = 2;
+                //way = 2;
                 switch (way)
                 {
                     case 0:

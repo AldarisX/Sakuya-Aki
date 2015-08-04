@@ -350,7 +350,7 @@ namespace Sakuya_Aki
             {
                 picctrl.picisMove = true;
             }
-        }
+        }//允许移动的开关
         public static void doevents()
         {
             DispatcherFrame frame = new DispatcherFrame(true);
