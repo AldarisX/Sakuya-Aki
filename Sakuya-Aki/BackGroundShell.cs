@@ -165,11 +165,13 @@ namespace Sakuya_Aki
         {
             mainwindow.updatestate("hung", 10);
             mainwindow.SklUp();
+            mainwindow.displaytips("吃饭饭", 2000);
         }//+10饥饿度
         private void Addcleaner(object sender, EventArgs e)
         {
             mainwindow.updatestate("cleaner", 10);
             mainwindow.SklUp();
+            mainwindow.displaytips("洗澡澡", 2000);
         }//+10清洁度
         private void Addall(object sender, EventArgs e)
         {

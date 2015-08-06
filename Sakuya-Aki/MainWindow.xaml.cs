@@ -156,11 +156,13 @@ namespace Sakuya_Aki
         {
             statectrl.regupdate("hung", 10);
             SklUp();
+            displaytips("吃饭饭", 2000);
         }//WPF右键菜单状态的触发
         private void CleanerAdd(object sender, RoutedEventArgs e)
         {
             statectrl.regupdate("cleaner", 10);
             SklUp();
+            displaytips("洗澡澡", 2000);
         }//WPF右键菜单状态的触发
         private void AddAll(object sender, RoutedEventArgs e)
         {
