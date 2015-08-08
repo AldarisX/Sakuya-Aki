@@ -15,8 +15,8 @@ namespace Sakuya_Aki
         private DateTime BeginTime;
         private DateTime EndTime;
         private DispatcherTimer notifystate = new DispatcherTimer();
-        private System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
-        private System.Windows.Forms.MenuItem windowtop = new System.Windows.Forms.MenuItem("顶置");
+        public System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
+        public System.Windows.Forms.MenuItem windowtop = new System.Windows.Forms.MenuItem("顶置");
 
         public BackGroundShell(MainWindow mainwindow)
         {
@@ -192,12 +192,14 @@ namespace Sakuya_Aki
             if (!picmove.Checked)
             {
                 picmove.Checked = true;
+                mainwindow.picmovex.IsChecked = true;
                 mainwindow.picmove("disable");
             }
             //如果开启了禁止移动
             else
             {
                 picmove.Checked = false;
+                mainwindow.picmovex.IsChecked = false;
                 mainwindow.picmove("enable");
             }
         }//允许移动的操作
@@ -207,12 +209,14 @@ namespace Sakuya_Aki
             if (!picmove.Checked)
             {
                 windowtop.Checked = true;
+                mainwindow.windowtopx.IsChecked = true;
                 mainwindow.windowtopon();
             }
             //如果开启了顶置
             else
             {
                 windowtop.Checked = false;
+                mainwindow.windowtopx.IsChecked = false;
                 mainwindow.windowtopoff();
             }
         }//窗口顶置的操作

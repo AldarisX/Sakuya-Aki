@@ -190,6 +190,40 @@ namespace Sakuya_Aki
             actionzc.Game0(num);
             SklUp();
         }//WPF右键菜单游戏的触发
+        private void picmovechange(object sender, RoutedEventArgs e)
+        {
+            //如果没有开启禁止移动
+            if (picmovex.IsChecked)
+            {
+                picmove("disable");
+                bgshell.picmove.Checked = true;
+                picmovex.IsChecked = true;
+            }
+            //如果开启了禁止移动
+            else
+            {
+                picmove("enable");
+                bgshell.picmove.Checked = false;
+                picmovex.IsChecked = false;
+            }
+        }//WPF右键菜单移动的触发
+        private void windowstopchange(object sender, RoutedEventArgs e)
+        {
+            //如果没有开启顶置
+            if (windowtopx.IsChecked)
+            {
+                windowtopx.IsChecked = true;
+                bgshell.windowtop.Checked = true;
+                windowtopon();
+            }
+            //如果开启了顶置
+            else
+            {
+                windowtopx.IsChecked = false;
+                bgshell.windowtop.Checked = false;
+                windowtopoff();
+            }
+        }
         public void SklUp()
         {
             sklup++;

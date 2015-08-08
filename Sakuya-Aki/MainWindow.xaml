@@ -1,4 +1,4 @@
-﻿<Window x:Name="Sakuya" Topmost="True" x:Class="Sakuya_Aki.MainWindow"
+﻿<Window x:Name="Sakuya" x:Class="Sakuya_Aki.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
@@ -26,6 +26,8 @@
                             <MenuItem Header="剪刀" Click="Game0jd"/>
                             <MenuItem Header="布" Click="Game0bu"/>
                         </MenuItem>
+                        <MenuItem Name="picmovex" Header="禁止移动" Click="picmovechange" IsCheckable="True" IsChecked="False"/>
+                        <MenuItem Name="windowtopx" Header="顶置" Click="windowstopchange" IsCheckable="True" IsChecked="False"/>
                     </ContextMenu>
                 </Image.ContextMenu>
             </Image>
