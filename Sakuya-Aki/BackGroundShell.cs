@@ -16,6 +16,7 @@ namespace Sakuya_Aki
         private DateTime EndTime;
         private DispatcherTimer notifystate = new DispatcherTimer();
         private System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
+        private System.Windows.Forms.MenuItem windowtop = new System.Windows.Forms.MenuItem("顶置");
 
         public BackGroundShell(MainWindow mainwindow)
         {
@@ -84,10 +85,11 @@ namespace Sakuya_Aki
             aboutme.Click += new EventHandler(AboutMe);
             System.Windows.Forms.MenuItem reset = new System.Windows.Forms.MenuItem("重置桌桜酱的位置");
             reset.Click += new EventHandler(resetPic);
-            //System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动~");
             picmove.Checked = false;
             picmove.Click += new EventHandler(picmovechange);
-            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, aboutme, reset, });
+            windowtop.Checked = false;
+            windowtop.Click += new EventHandler(windowstopchange);
+            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, windowtop, aboutme, reset, });
 
             //设置单菜单项
             System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
@@ -101,7 +103,7 @@ namespace Sakuya_Aki
 
             //动态托盘状态
             notifystate.Tick += new EventHandler(notifystateupdate);
-            notifystate.Interval = new TimeSpan(0, 1, 0);
+            notifystate.Interval = new TimeSpan(0, 0, 30);
             notifystate.Start();
         }
         private void AboutMe(object sender, EventArgs e)
@@ -199,6 +201,21 @@ namespace Sakuya_Aki
                 mainwindow.picmove("enable");
             }
         }//允许移动的操作
+        private void windowstopchange(object sender, EventArgs e)
+        {
+            //如果没有开启顶置
+            if (!picmove.Checked)
+            {
+                windowtop.Checked = true;
+                mainwindow.windowtopon();
+            }
+            //如果开启了顶置
+            else
+            {
+                windowtop.Checked = false;
+                mainwindow.windowtopoff();
+            }
+        }//窗口顶置的操作
         private void setlunchtiptime(object sender, EventArgs e)
         {
             mainwindow.tiptype = "lunchtiptime";

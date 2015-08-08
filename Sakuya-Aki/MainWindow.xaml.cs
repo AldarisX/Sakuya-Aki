@@ -360,6 +360,14 @@ namespace Sakuya_Aki
         {
             statectrl.checklogintime();
         }//检查签到
+        public void windowtopon()
+        {
+            Topmost = true;
+        }//开启顶置
+        public void windowtopoff()
+        {
+            Topmost = false;
+        }//关闭顶置
         public static void doevents()
         {
             DispatcherFrame frame = new DispatcherFrame(true);
