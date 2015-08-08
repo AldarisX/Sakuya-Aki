@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -11,12 +12,13 @@ namespace Sakuya_Aki
     class Tips
     {
         MainWindow mainwindow;
-        Thread tips;
+        Task tips;
         private string tipcon;
         private int dt;
         private DispatcherTimer timetip = new DispatcherTimer();
         private DispatcherTimer timecheck = new DispatcherTimer();
         private DispatcherTimer tipscheck = new DispatcherTimer();
+        private DispatcherTimer tipsupdate = new DispatcherTimer();
         private int nowhour = DateTime.Now.Hour;
         private int backhour = DateTime.Now.Hour;
         Random rd = new Random();
@@ -41,6 +43,9 @@ namespace Sakuya_Aki
             tipscheck.Tick += new EventHandler(sometips);
             tipscheck.Interval = new TimeSpan(0, 0, 31);
             tipscheck.Start();
+            tipsupdate.Tick += new EventHandler(tipxyupdate);
+            tipsupdate.Interval = new TimeSpan(0, 0, 0, 0, 10);
+            tipsupdate.Start();
         }
         public void firsttime()
         {
@@ -49,33 +54,41 @@ namespace Sakuya_Aki
         }//报时
         public void displaytips(string tipcon, int tipint)
         {
-            tips = new Thread(tipthread);
+            Console.WriteLine("tips");
+            tips = new Task(tiptask);
             this.tipcon = tipcon;
             dt = tipint;
             tips.Start();
         }//用新线程管理tip
-        private void tipthread()
+        private void tiptask()
         {
             Label tip = mainwindow.tip;
-            tip.Dispatcher.Invoke(new Action(()=>
-                {
-                    tip.Foreground = new SolidColorBrush(Color.FromRgb(mainwindow.colorR, mainwindow.colorG, mainwindow.colorB));
-                    tip.FontSize = mainwindow.scale * mainwindow.swidth * mainwindow.sheight * 0.00001;
-                    tip.Content = tipcon;
-                    MainWindow.doevents();
-                    tipxy(tipcon);
-                    tip.SetValue(Canvas.LeftProperty, mainwindow.tipx);
-                    tip.SetValue(Canvas.TopProperty, mainwindow.tipy);
-                    tip.Visibility = Visibility.Visible;
-                    MainWindow.doevents();
-                }));
+            tip.Dispatcher.Invoke((Action)delegate
+            {
+                tip.Foreground = new SolidColorBrush(Color.FromRgb(mainwindow.colorR, mainwindow.colorG, mainwindow.colorB));
+                tip.FontSize = mainwindow.scale * mainwindow.swidth * mainwindow.sheight * 0.00001;
+                tip.Content = tipcon;
+                MainWindow.doevents();
+                tipxy(tipcon);
+                tip.SetValue(Canvas.LeftProperty, mainwindow.tipx);
+                tip.SetValue(Canvas.TopProperty, mainwindow.tipy);
+                tip.Visibility = Visibility.Visible;
+                MainWindow.doevents();
+            });
             //这里分开是因为.Dispatcher.Invoke里是主线程
             Thread.Sleep(dt);
-            tip.Dispatcher.Invoke(new Action(() =>
-                {
-                    tip.Visibility = Visibility.Hidden;
-                }));
+            tip.Dispatcher.Invoke((Action)delegate
+            {
+                tip.Visibility = Visibility.Hidden;
+            });
         }//tip显示的管理
+        private void tipxyupdate(object sender, EventArgs e)
+        {
+            Label tip = mainwindow.tip;
+            tipxy(tipcon);
+            tip.SetValue(Canvas.LeftProperty, mainwindow.tipx);
+            tip.SetValue(Canvas.TopProperty, mainwindow.tipy);
+        }//tip位置的更新
         public void rdtimetip(object sender, EventArgs e)
         {
             if (!mainwindow.isClick)
