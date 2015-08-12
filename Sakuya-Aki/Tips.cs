@@ -85,6 +85,8 @@ namespace Sakuya_Aki
                 {
                     reporttime();
                 }
+                mainwindow.CurrentStartTime = DateTime.Now.Date;
+                mainwindow.checklogintime();
             }
         }//随机显示时间tip
         private void reporttime()
@@ -126,7 +128,6 @@ namespace Sakuya_Aki
         private void checktime(object sender, EventArgs e)
         {
             int nowhour = DateTime.Now.Hour;
-            //int nowmin = DateTime.Now.Minute;
             Console.WriteLine(mainwindow.lunchtime.Hour);
             if (nowhour - backhour == 1)
             {
@@ -140,7 +141,7 @@ namespace Sakuya_Aki
                 }
                 backhour++;
             }
-        }//检查是否到了特定时间，否则进行普通报时 
+    }//检查是否到了特定时间，否则进行普通报时 
         private void sometips(object sender, EventArgs e)
         {
             if (!mainwindow.isClick)

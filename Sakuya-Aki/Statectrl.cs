@@ -68,26 +68,7 @@ namespace Sakuya_Aki
                     cleaner = Convert.ToInt32(rsg.GetValue("cleaner"));
                     mainwindow.LastStartTime = Convert.ToDateTime(rsg.GetValue("LastStartTime"));
                     mainwindow.inStartTime = Convert.ToDateTime(rsg.GetValue("inStartTime"));
-
-                    if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)
-                    {
-                        mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
-                        rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
-                    }
-                    else
-                    {
-                        if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 1)
-                        {
-                            mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
-                            rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
-                        }
-                        else
-                        {
-                            rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
-                            rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
-                            mainwindow.inStartTime = mainwindow.CurrentStartTime;
-                        }
-                    }
+                    checklogintime();
                 }
                 else
                 {
@@ -303,5 +284,29 @@ namespace Sakuya_Aki
                 mainwindow.statecleaner = "发霉的";
             }
         }//更新桌宠清洁度语句
+        public void checklogintime()
+        {
+            rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Sakuya\\" + mainwindow.name);
+            rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Sakuya\\" + mainwindow.name, true);
+            if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)
+            {
+                mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
+                rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+            }
+            else
+            {
+                if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 1)
+                {
+                    mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
+                    rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                }
+                else
+                {
+                    rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                    rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                    mainwindow.inStartTime = mainwindow.CurrentStartTime;
+                }
+            }
+        }//检查签到
     }
 }
