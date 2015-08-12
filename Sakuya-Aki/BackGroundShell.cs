@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -89,7 +90,9 @@ namespace Sakuya_Aki
             picmove.Click += new EventHandler(picmovechange);
             windowtop.Checked = false;
             windowtop.Click += new EventHandler(windowstopchange);
-            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, windowtop, aboutme, reset, });
+            System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开机启动");
+            startup.Click += new EventHandler(AutoStartUp);
+            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, windowtop, startup, aboutme, reset, });
 
             //设置单菜单项
             System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
@@ -290,6 +293,25 @@ namespace Sakuya_Aki
             mainwindow.tiptype = "scale";
             mainwindow.settiptime("输入一个数", "在屏幕中间输入一个数哦", "scale");
         }//缩放lc
+        private void AutoStartUp(object sender, EventArgs e)
+        {
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.Start();
+            string commandDel0 = @"del ""%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki""";
+            string commandDel1 = @"del ""%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki""";
+            cmd.StandardInput.WriteLine(commandDel1);
+            string commandStart0 = @"mklink ""%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki"" """
+            + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
+            string commandStart1 = @"mklink ""%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki"" """
+            + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
+            cmd.StandardInput.WriteLine(commandStart1);
+            cmd.Close();
+        }//开机启动
         private void setscalelevel(double level)
         {
             mainwindow.scale = level;

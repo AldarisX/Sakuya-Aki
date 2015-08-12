@@ -59,10 +59,13 @@ namespace Sakuya_Aki
         public DateTime sleeptime;
         //判断是否点击了桌宠
         public bool isClick = false;
+        //签到相关的
         public DateTime LastStartTime;
         public DateTime inStartTime = new DateTime();
-        public DateTime CurrentStartTime = DateTime.Now.Date;
+        public DateTime CurrentStartTime = new DateTime();
         public double LoginTime;
+        //强制控制图片
+        public int picway = -1;
 
         public MainWindow()
         {
@@ -318,7 +321,7 @@ namespace Sakuya_Aki
             {
                 displaytips("请输入数字哦", 2000);
                 res = false;
-                MessageBox.Show("输入的不是数字");
+                MessageBox.Show("输入的不是数字\n试试关掉输入法");
             }
             if (res == true)
             {
@@ -393,7 +396,7 @@ namespace Sakuya_Aki
         public void checklogintime()
         {
             statectrl.checklogintime();
-        }//检查签到
+        }//定时检查签到
         public void windowtopon()
         {
             Topmost = true;
@@ -402,6 +405,11 @@ namespace Sakuya_Aki
         {
             Topmost = false;
         }//关闭顶置
+        public void pictooltip(string con)
+        {
+            pic.ToolTip = con;
+            doevents();
+        }
         public static void doevents()
         {
             DispatcherFrame frame = new DispatcherFrame(true);

@@ -54,7 +54,6 @@ namespace Sakuya_Aki
         }//报时
         public void displaytips(string tipcon, int tipint)
         {
-            Console.WriteLine("tips");
             tips = new Task(tiptask);
             this.tipcon = tipcon;
             dt = tipint;
@@ -141,7 +140,6 @@ namespace Sakuya_Aki
         private void checktime(object sender, EventArgs e)
         {
             int nowhour = DateTime.Now.Hour;
-            Console.WriteLine(mainwindow.lunchtime.Hour);
             if (nowhour - backhour == 1)
             {
                 if (nowhour == mainwindow.lunchtime.Hour)

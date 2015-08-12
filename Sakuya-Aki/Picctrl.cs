@@ -66,7 +66,6 @@ namespace Sakuya_Aki
             //当鼠标放开时判定是否出界
             if (!mainwindow.isClick)
             {
-                //出界后再回到一个随机坐标
                 Image pic = mainwindow.pic;
                 double size = mainwindow.size * mainwindow.scale;
                 pic.Dispatcher.Invoke(new Action(delegate
@@ -227,8 +226,16 @@ namespace Sakuya_Aki
             if (mainwindow.isClick==false)
             {
                 Timer.Stop();
-                int way = new Random().Next(0, 50);
-                //way = 2;
+                //锁死图片组
+                int way = 0;
+                if (mainwindow.picway == -1)
+                {
+                    way = new Random().Next(0, 50);
+                }
+                else
+                {
+                    way = mainwindow.picway;
+                }
                 switch (way)
                 {
                     case 0:
@@ -492,6 +499,10 @@ namespace Sakuya_Aki
                         sleeptime = 1000;
                         displayimg("46", 0, 0);
                         break;
+                    case 34:
+                        sleeptime = 500;
+                        displayimg("18", 0, 0);
+                        break;
                     default:
                         displayimg("1", 0, 0);
                         break;
@@ -582,17 +593,25 @@ namespace Sakuya_Aki
         private void imgctrlcolse()
         {
             Timer.Stop();
-            imgctrl.Abort();
+            try
+            {
+                imgctrl.Abort();
+                imgctrl.Join();
+            }
+            catch
+            {
+                imgctrl.Suspend();
+            }
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = false;
             
-        }//关闭图片切换
+        }//关闭图片切换以及点击
         private void imgctrlstart()
         {
             //imgctrl.Start();
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = true;
             Timer.Start();
-        }//开启图片切换
+        }//开启图片切换以及点击
     }
 }

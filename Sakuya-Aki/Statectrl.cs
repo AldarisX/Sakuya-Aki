@@ -21,6 +21,7 @@ namespace Sakuya_Aki
         private DispatcherTimer sklt = new DispatcherTimer();
         private DispatcherTimer hungt = new DispatcherTimer();
         private DispatcherTimer cleanert = new DispatcherTimer();
+        private DispatcherTimer checkstate = new DispatcherTimer();
 
         public Statectrl(MainWindow mainwindow)
         {
@@ -42,6 +43,9 @@ namespace Sakuya_Aki
             //cleanert.Interval = new TimeSpan(0, 0, 0, 1800, 0);
             cleanert.Interval = new TimeSpan(0, 0, 0, 1, 500);
             cleanert.Start();
+            checkstate.Tick += new EventHandler(Checkstate);
+            checkstate.Interval = new TimeSpan(0, 0, 1);
+            checkstate.Start();
         }
         public void checkreg()//关于注册表的读取与失效时建立
         {
@@ -173,6 +177,29 @@ namespace Sakuya_Aki
                 regupdate("skl", -1);
             }
         }
+        private void Checkstate(object sender, EventArgs e)
+        {
+            if (hung > 60)
+            {
+                mainwindow.pictooltip("萌萌的桜");
+                mainwindow.picway = -1;
+            }
+            else if (hung > 40 && hung < 60)
+            {
+                mainwindow.pictooltip("桜饿了，快给我投食吧");
+                mainwindow.picmove("enable");
+            }
+            else if(hung > 20 && hung < 40)
+            {
+                mainwindow.picway = -1;
+            }
+            else if (hung < 20)
+            {
+                mainwindow.pictooltip("桜要饿死了");
+                mainwindow.picmove("disable");
+                mainwindow.picway = 34;
+            }
+        }//Aki的一些反映
         public void regupdate(string name,double num)
         {
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Sakuya\\" + mainwindow.name, true);
@@ -286,8 +313,17 @@ namespace Sakuya_Aki
         }//更新桌宠清洁度语句
         public void checklogintime()
         {
+            mainwindow.CurrentStartTime = DateTime.Now.Date;
+
             rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Sakuya\\" + mainwindow.name);
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Sakuya\\" + mainwindow.name, true);
+
+            Thread.Sleep(50);
+
+            if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 0)
+            {
+                mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
+            }
             if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)
             {
                 mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
