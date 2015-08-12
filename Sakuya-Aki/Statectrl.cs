@@ -50,8 +50,9 @@ namespace Sakuya_Aki
             try
             {
                 if (rsg.GetValue("skl") != null && rsg.GetValue("hung") != null && rsg.GetValue("cleaner") != null &&
-                    rsg.GetValue("lunchtiptime") != null && rsg.GetValue("sleeptiptime") != null && rsg.GetValue("colorR") != null && 
-                    rsg.GetValue("colorG") != null && rsg.GetValue("colorB") != null && rsg.GetValue("scale") != null)
+                    rsg.GetValue("lunchtiptime") != null && rsg.GetValue("sleeptiptime") != null && rsg.GetValue("colorR") != null &&
+                    rsg.GetValue("colorG") != null && rsg.GetValue("colorB") != null && rsg.GetValue("scale") != null &&
+                    rsg.GetValue("inStartTime") != null && rsg.GetValue("LastStartTime") != null)
                 {
                     mainwindow.skl = Convert.ToInt32(rsg.GetValue("skl"));
                     mainwindow.hung = Convert.ToInt32(rsg.GetValue("hung"));
@@ -65,6 +66,28 @@ namespace Sakuya_Aki
                     skl = Convert.ToInt32(rsg.GetValue("skl"));
                     hung = Convert.ToInt32(rsg.GetValue("hung"));
                     cleaner = Convert.ToInt32(rsg.GetValue("cleaner"));
+                    mainwindow.LastStartTime = Convert.ToDateTime(rsg.GetValue("LastStartTime"));
+                    mainwindow.inStartTime = Convert.ToDateTime(rsg.GetValue("inStartTime"));
+
+                    if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)
+                    {
+                        mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
+                        rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                    }
+                    else
+                    {
+                        if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 1)
+                        {
+                            mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
+                            rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                        }
+                        else
+                        {
+                            rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                            rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                            mainwindow.inStartTime = mainwindow.CurrentStartTime;
+                        }
+                    }
                 }
                 else
                 {
@@ -78,6 +101,8 @@ namespace Sakuya_Aki
                     rsg.SetValue("colorG", "147");
                     rsg.SetValue("colorB", "147");
                     rsg.SetValue("scale", "1");
+                    rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                    rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
                 }
             }
             catch
@@ -92,6 +117,8 @@ namespace Sakuya_Aki
                 rsg.SetValue("colorG", "147");
                 rsg.SetValue("colorB", "147");
                 rsg.SetValue("scale", "1");
+                rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
+                rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
             }
         }
         private void hungchecker(object sender, EventArgs e)

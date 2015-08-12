@@ -153,7 +153,8 @@ namespace Sakuya_Aki
             string skl = "\n好感度：" + Convert.ToString(mainwindow.skl);
             string hung = "\n饥饿度：" + Convert.ToString(mainwindow.hung);
             string cleaner = "\n清洁度：" + Convert.ToString(mainwindow.cleaner);
-            string show = runtime.Substring(0, runtime.Length - 8) + "的萌\n" + state + skl + hung + cleaner;
+            string logintime = "\n连续开启了" + Convert.ToString(mainwindow.LoginTime) + "天";
+            string show = runtime.Substring(0, runtime.Length - 8) + "的萌\n" + state + skl + hung + cleaner + logintime;
             System.Windows.MessageBox.Show(show);
         }//加载状态
         private void Addskl(object sender, EventArgs e)

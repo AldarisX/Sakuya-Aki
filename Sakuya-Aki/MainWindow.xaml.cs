@@ -19,7 +19,6 @@ namespace Sakuya_Aki
         public byte colorR = 255;
         public byte colorG = 147;
         public byte colorB = 147;
-        //public Color COLOR = (Color)ColorConverter.ConvertFromString((string)color);
         Picctrl picctrl;
         Statectrl statectrl;
         BackGroundShell bgshell;
@@ -60,6 +59,10 @@ namespace Sakuya_Aki
         public DateTime sleeptime;
         //判断是否点击了桌宠
         public bool isClick = false;
+        public DateTime LastStartTime;
+        public DateTime inStartTime = new DateTime();
+        public DateTime CurrentStartTime = DateTime.Now.Date;
+        public double LoginTime;
 
         public MainWindow()
         {
