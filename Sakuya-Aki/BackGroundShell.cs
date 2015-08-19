@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Threading;
+using Microsoft.Win32;
 
 namespace Sakuya_Aki
 {
@@ -16,6 +18,8 @@ namespace Sakuya_Aki
         private DateTime BeginTime;
         private DateTime EndTime;
         private DispatcherTimer notifystate = new DispatcherTimer();
+        RegistryKey rsg = null;
+        Process cmd = new Process();
         public System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
         public System.Windows.Forms.MenuItem windowtop = new System.Windows.Forms.MenuItem("顶置");
 
@@ -81,6 +85,13 @@ namespace Sakuya_Aki
             lc.Click += new EventHandler(setscalelc);
             System.Windows.Forms.MenuItem setscale = new System.Windows.Forms.MenuItem("设置缩放", new System.Windows.Forms.MenuItem[] { l1, l2, l3, l4, l5, lc });
 
+            //开机启动菜单项
+            System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开机启动");
+            startup.Click += new EventHandler(AutoStartUp);
+            System.Windows.Forms.MenuItem startupc = new System.Windows.Forms.MenuItem("关闭开机启动");
+            startupc.Click += new EventHandler(AutoStartUpC);
+            System.Windows.Forms.MenuItem StartUpMenu = new System.Windows.Forms.MenuItem("开机启动", new System.Windows.Forms.MenuItem[] { startup ,startupc});
+
             //设置设置菜单项
             System.Windows.Forms.MenuItem aboutme = new System.Windows.Forms.MenuItem("关于桜祈");
             aboutme.Click += new EventHandler(AboutMe);
@@ -90,9 +101,7 @@ namespace Sakuya_Aki
             picmove.Click += new EventHandler(picmovechange);
             windowtop.Checked = false;
             windowtop.Click += new EventHandler(windowstopchange);
-            System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开机启动");
-            startup.Click += new EventHandler(AutoStartUp);
-            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, windowtop, startup, aboutme, reset, });
+            System.Windows.Forms.MenuItem setting = new System.Windows.Forms.MenuItem("设置", new System.Windows.Forms.MenuItem[] { tipupdate, setcolor, setscale, picmove, windowtop, StartUpMenu, aboutme, reset, });
 
             //设置单菜单项
             System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
@@ -295,23 +304,19 @@ namespace Sakuya_Aki
         }//缩放lc
         private void AutoStartUp(object sender, EventArgs e)
         {
-            Process cmd = new Process();
-            cmd.StartInfo.FileName = "cmd.exe";
-            cmd.StartInfo.UseShellExecute = false;
-            cmd.StartInfo.RedirectStandardInput = true;
-            cmd.StartInfo.RedirectStandardOutput = true;
-            cmd.StartInfo.CreateNoWindow = true;
-            cmd.Start();
-            string commandDel0 = @"del ""%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki""";
-            string commandDel1 = @"del ""%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki""";
-            cmd.StandardInput.WriteLine(commandDel1);
-            string commandStart0 = @"mklink ""%ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki"" """
-            + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
-            string commandStart1 = @"mklink ""%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Sakuya-Aki"" """
-            + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
-            cmd.StandardInput.WriteLine(commandStart1);
-            cmd.Close();
+            rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+            string command = @"""" + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
+            rsg.SetValue("Sakuya-Aki", command);
+            mainwindow.displaytips("已经设定好了哦", 2000);
         }//开机启动
+        private void AutoStartUpC(object sender, EventArgs e)
+        {
+            rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+            rsg.DeleteValue("Sakuya-Aki");
+            mainwindow.displaytips("已经取消了哦", 2000);
+        }//关闭开机启动
         private void setscalelevel(double level)
         {
             mainwindow.scale = level;

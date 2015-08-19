@@ -36,12 +36,12 @@ namespace Sakuya_Aki
         public void starttimer()
         {
             hungt.Tick += new EventHandler(hungchecker);
-            //hungt.Interval = new TimeSpan(0, 0, 0, 900, 0);
-            hungt.Interval = new TimeSpan(0, 0, 0, 1, 0);
+            hungt.Interval = new TimeSpan(0, 0, 0, 900, 0);
+            //hungt.Interval = new TimeSpan(0, 0, 0, 1, 0);
             hungt.Start();
             cleanert.Tick += new EventHandler(cleanerchecker);
-            //cleanert.Interval = new TimeSpan(0, 0, 0, 1800, 0);
-            cleanert.Interval = new TimeSpan(0, 0, 0, 1, 500);
+            cleanert.Interval = new TimeSpan(0, 0, 0, 1800, 0);
+            //cleanert.Interval = new TimeSpan(0, 0, 0, 1, 500);
             cleanert.Start();
             checkstate.Tick += new EventHandler(Checkstate);
             checkstate.Interval = new TimeSpan(0, 0, 1);
@@ -320,23 +320,23 @@ namespace Sakuya_Aki
 
             Thread.Sleep(50);
 
-            if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 0)
+            if (mainwindow.CurrentStartTime == mainwindow.LastStartTime)//如果是今天第N次打开
             {
                 mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
             }
-            if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)
+            else if ((mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays == 1)//如果就在第二天
             {
                 mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
                 rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
             }
-            else
+            else//不是在第二天
             {
-                if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 1)
+                if ((mainwindow.CurrentStartTime - mainwindow.LastStartTime).TotalDays == 1)//如果是在上一次记录的后面一天
                 {
                     mainwindow.LoginTime = (mainwindow.CurrentStartTime - mainwindow.inStartTime).TotalDays;
                     rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));
                 }
-                else
+                else//如果不是连续打开的
                 {
                     rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
                     rsg.SetValue("LastStartTime", Convert.ToString(mainwindow.CurrentStartTime));

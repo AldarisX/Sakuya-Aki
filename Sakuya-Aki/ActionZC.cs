@@ -18,11 +18,11 @@ namespace Sakuya_Aki
             //强行增加胜率
             int Sakuya = rd.Next(0, 8);
             //Sakuya = 5;
-            if (Sakuya <= 3)
+            if (Sakuya <= 5)
             {
 
             }
-            if (Sakuya > 3)
+            if (Sakuya > 5)
             {
                 switch (num)
                 {
