@@ -304,9 +304,10 @@ namespace Sakuya_Aki
         }//缩放lc
         private void AutoStartUp(object sender, EventArgs e)
         {
+            Console.WriteLine();
             rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
-            string command = @"""" + System.Windows.Forms.Application.StartupPath + @"\Sakuya-Aki.exe""";
+            string command = @"""" + Process.GetCurrentProcess().MainModule.FileName + @"""";
             rsg.SetValue("Sakuya-Aki", command);
             mainwindow.displaytips("已经设定好了哦", 2000);
         }//开机启动

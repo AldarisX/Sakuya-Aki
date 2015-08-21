@@ -54,7 +54,7 @@ namespace Sakuya_Aki
             mousePoint.Tick += new EventHandler(checkMousePoint);
             mousePoint.Interval = new TimeSpan(0, 0, 0, 0, 5);
             mousePoint.Start();
-        }   //绘制pic
+        }//绘制pic
         private void Timer_Tick(object sender, EventArgs e)
         {
             //用新线程开始换图片
