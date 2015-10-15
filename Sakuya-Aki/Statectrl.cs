@@ -106,6 +106,22 @@ namespace Sakuya_Aki
                 rsg.SetValue("inStartTime", Convert.ToString(mainwindow.CurrentStartTime));
             }
         }
+        public void ChecksStartUp()
+        {
+            RegistryKey rsgx = null;
+            rsgx = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
+            rsgx = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
+            if(rsgx.GetValue("Sakuya-Aki") != null)
+            {
+                BackGroundShell.startup.Checked = true;
+                BackGroundShell.startupc.Checked = false;
+            }
+            else
+            {
+                BackGroundShell.startup.Checked = false;
+                BackGroundShell.startupc.Checked = true;
+            }
+        }//读取开机启动的设置
         private void hungchecker(object sender, EventArgs e)
         {
             //一个饥饿度的最小值

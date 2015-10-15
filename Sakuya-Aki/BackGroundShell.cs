@@ -22,7 +22,9 @@ namespace Sakuya_Aki
         Process cmd = new Process();
         public System.Windows.Forms.MenuItem picmove = new System.Windows.Forms.MenuItem("禁止移动");
         public System.Windows.Forms.MenuItem windowtop = new System.Windows.Forms.MenuItem("顶置");
-
+        public static System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开启");
+        public static System.Windows.Forms.MenuItem startupc = new System.Windows.Forms.MenuItem("关闭");
+        
         public BackGroundShell(MainWindow mainwindow)
         {
             this.mainwindow = mainwindow;
@@ -86,9 +88,9 @@ namespace Sakuya_Aki
             System.Windows.Forms.MenuItem setscale = new System.Windows.Forms.MenuItem("设置缩放", new System.Windows.Forms.MenuItem[] { l1, l2, l3, l4, l5, lc });
 
             //开机启动菜单项
-            System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开机启动");
+            //System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开机启动");
             startup.Click += new EventHandler(AutoStartUp);
-            System.Windows.Forms.MenuItem startupc = new System.Windows.Forms.MenuItem("关闭开机启动");
+            //System.Windows.Forms.MenuItem startupc = new System.Windows.Forms.MenuItem("关闭开机启动");
             startupc.Click += new EventHandler(AutoStartUpC);
             System.Windows.Forms.MenuItem StartUpMenu = new System.Windows.Forms.MenuItem("开机启动", new System.Windows.Forms.MenuItem[] { startup ,startupc});
 
@@ -304,12 +306,13 @@ namespace Sakuya_Aki
         }//缩放lc
         private void AutoStartUp(object sender, EventArgs e)
         {
-            Console.WriteLine();
             rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
             string command = @"""" + Process.GetCurrentProcess().MainModule.FileName + @"""";
             rsg.SetValue("Sakuya-Aki", command);
             mainwindow.displaytips("已经设定好了哦", 2000);
+            startup.Checked = true;
+            startupc.Checked = false;
         }//开机启动
         private void AutoStartUpC(object sender, EventArgs e)
         {
@@ -317,6 +320,8 @@ namespace Sakuya_Aki
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
             rsg.DeleteValue("Sakuya-Aki");
             mainwindow.displaytips("已经取消了哦", 2000);
+            startup.Checked = false;
+            startupc.Checked = true;
         }//关闭开机启动
         private void setscalelevel(double level)
         {

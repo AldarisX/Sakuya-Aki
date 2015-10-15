@@ -559,7 +559,11 @@ namespace Sakuya_Aki
                 fr.Continue = false;
             }, frame);
             Dispatcher.PushFrame(frame);
-            Thread.Sleep(sleeptime);
+            //Thread.Sleep(sleeptime);
+            for(int i = 0; i < sleeptime; i++)
+            {
+                Thread.Sleep(1);
+            }
         }//这里是写一个WF的DoEvents()
         public static void doevents()
         {

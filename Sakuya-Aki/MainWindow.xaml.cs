@@ -90,6 +90,7 @@ namespace Sakuya_Aki
                 statectrl.start();
                 //开始执行托盘
                 Thread.Sleep(5);
+                statectrl.ChecksStartUp();
                 bgshell.InitialTray();
                 //绘制pic
                 Thread.Sleep(5);
