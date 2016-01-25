@@ -41,7 +41,7 @@ namespace Sakuya_Aki
             timecheck.Interval = new TimeSpan(0, 1, 0);
             timecheck.Start();
             tipscheck.Tick += new EventHandler(sometips);
-            tipscheck.Interval = new TimeSpan(0, 0, 31);
+            tipscheck.Interval = new TimeSpan(0, 0, 5);
             tipscheck.Start();
             tipsupdate.Tick += new EventHandler(tipxyupdate);
             tipsupdate.Interval = new TimeSpan(0, 0, 0, 0, 10);
@@ -152,7 +152,7 @@ namespace Sakuya_Aki
                 }
                 backhour++;
             }
-    }//检查是否到了特定时间，否则进行普通报时 
+       }//检查是否到了特定时间，否则进行普通报时 
         private void sometips(object sender, EventArgs e)
         {
             if (!mainwindow.isClick)
@@ -165,8 +165,8 @@ namespace Sakuya_Aki
                     XmlDocument xml = new XmlDocument();
                     try
                     {
-                        //xml.Load("tips.xml");
-                        xml.LoadXml(Properties.Resources.tips);
+                        xml.Load("tips.xml");
+                        //xml.LoadXml(Properties.Resources.tips);
                         int levelnum = 1;
                         int wayx = rd.Next(0, 101);
                         //提高基础卖萌的概率

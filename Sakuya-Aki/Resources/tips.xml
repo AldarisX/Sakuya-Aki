@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <tips>
   <!--这里是注释——
-  这里是级别暂时没想好做什么
+  这里的level暂时没想好做什么
   <level>
     这里就是提示了
     <tip>
@@ -24,9 +24,11 @@
   <level>
     <tip>
       <str>"使用Aki时，请离屏幕30公分"</str>
+	  <t>3000</t>
     </tip>
     <tip>
       <str>"使用Aki时，双手请放在键盘上"</str>
+	  <t>3000</t>
     </tip>
     <tip>
       <str>"屏幕有毒哦"</str>
@@ -76,6 +78,9 @@
     </tip>
     <tip>
       <str>"N↓DA↑GI↑NA↓DA☆"</str>
+    </tip>
+	<tip>
+      <str>"满脑子H的家伙~"</str>
     </tip>
   </level>
 
