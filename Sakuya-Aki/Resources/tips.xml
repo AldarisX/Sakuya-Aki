@@ -6,33 +6,33 @@
     这里就是提示了
     <tip>
       提示的对话
-      <str>"使用桜时，请离屏幕30公分"</str>
+      <str>"使用Aki时，请离屏幕30公分"</str>
       提示显示的时间，默认2000毫秒（可以不写下面一行）
       <t>5000</t>
     </tip>
     <tip>
-      <str>"使用桜时，双手请放在键盘上"</str>
+      <str>"使用Aki时，双手请放在键盘上"</str>
     </tip>
     <tip>
       <str>"屏幕有毒哦"</str>
     </tip>
     <tip>
-      <str>"不好好对桜,桜是不会和你玩的（￣へ￣）"</str>
+      <str>"不好好对Aki,Aki是不会和你玩的（￣へ￣）"</str>
     </tip>
   </level>-->
 
   <level>
     <tip>
-      <str>"使用桜时，请离屏幕30公分"</str>
+      <str>"使用Aki时，请离屏幕30公分"</str>
     </tip>
     <tip>
-      <str>"使用桜时，双手请放在键盘上"</str>
+      <str>"使用Aki时，双手请放在键盘上"</str>
     </tip>
     <tip>
       <str>"屏幕有毒哦"</str>
     </tip>
     <tip>
-      <str>"不好好对桜,桜是不会和你玩的（￣へ￣）"</str>
+      <str>"不好好对Aki,Aki是不会和你玩的（￣へ￣）"</str>
     </tip>
     <tip>
       <str>"噗噜噗噜噗噜噜☆～"</str>
@@ -64,17 +64,30 @@
     <tip>
       <str>"喂？是110么？"</str>
     </tip>
+    <tip>
+      <str>"吃辣条么？"</str>
+      <t>5000</t>
+    </tip>
+    <tip>
+      <str>"biubiubiu～"</str>
+    </tip>
+    <tip>
+      <str>"poi～"</str>
+    </tip>
+    <tip>
+      <str>"N↓DA↑GI↑NA↓DA☆"</str>
+    </tip>
   </level>
 
   <level>
     <tip>
-      <str>"狗逼你的口水不要滴到键盘上好么想弄脏桜么^ ^"</str>
+      <str>"狗逼你的口水不要滴到键盘上好么想弄脏Aki么^ ^"</str>
     </tip>
     <tip>
       <str>"我看见你了哦！再抠脚我就炸了你电脑^w^"</str>
     </tip>
     <tip>
-      <str>"不好好对桜,桜是不会和你玩的（￣へ￣）"</str>
+      <str>"不好好对Aki,Aki是不会和你玩的（￣へ￣）"</str>
     </tip>
   </level>
 </tips>

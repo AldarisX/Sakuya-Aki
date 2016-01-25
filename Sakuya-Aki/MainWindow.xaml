@@ -7,7 +7,7 @@
     <!--Background="{x:Null}" AllowsTransparency="True" WindowStyle="None"-->
     <Grid>
         <Canvas Name="canvas">
-            <Image UseLayoutRounding="True" MouseLeftButtonDown="pic_MouseLeftButtonDown" MouseLeftButtonUp="pic_MouseLeftButtonUp" Name="pic" Height="128" Width="128" IsHitTestVisible="True" ToolTip="萌萌的桜">
+            <Image UseLayoutRounding="True" MouseLeftButtonDown="pic_MouseLeftButtonDown" MouseLeftButtonUp="pic_MouseLeftButtonUp" Name="pic" Height="128" Width="128" IsHitTestVisible="True" ToolTip="萌萌的Aki">
                 <!--UseLayoutRounding="True" RenderOptions.BitmapScalingMode="NearestNeighbor"-->
                 <ibehavior:Interaction.Behaviors>
                     <local:MyBehavior></local:MyBehavior>

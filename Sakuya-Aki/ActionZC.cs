@@ -54,7 +54,7 @@ namespace Sakuya_Aki
                                 words = "Master 输了耶~~~~~";
                                 break;
                             case 2:
-                                words = "桜酱输了的说-，-";
+                                words = "Aki酱输了的说-，-";
                                 break;
                         }
                         break;
@@ -63,7 +63,7 @@ namespace Sakuya_Aki
                         switch (num)
                         {
                             case 0:
-                                words = "桜酱输了的说-，-";
+                                words = "Aki酱输了的说-，-";
                                 break;
                             case 1:
                                 words = "平手了呢";
@@ -81,7 +81,7 @@ namespace Sakuya_Aki
                                 words = "Master 输了耶~~~~~";
                                 break;
                             case 1:
-                                words = "桜酱输了的说-，-";
+                                words = "Aki酱输了的说-，-";
                                 break;
                             case 2:
                                 words = "平手了呢";
@@ -89,12 +89,12 @@ namespace Sakuya_Aki
                         }
                         break;
                 }
-                mainwindow.displaytips("桜酱出了" + set + words, 3000);
+                mainwindow.displaytips("Aki酱出了" + set + words, 3000);
                 mainwindow.updatestate("skl", 1);
             }
             else
             {
-                mainwindow.displaytips("桜才不跟你玩呢", 5000);
+                mainwindow.displaytips("Aki才不跟你玩呢", 5000);
             }
         }//石头剪刀布
     }

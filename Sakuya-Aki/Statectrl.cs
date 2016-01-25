@@ -111,7 +111,7 @@ namespace Sakuya_Aki
             RegistryKey rsgx = null;
             rsgx = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             rsgx = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
-            if(rsgx.GetValue("Sakuya-Aki") != null)
+            if(rsgx.GetValue(mainwindow.programname) != null)
             {
                 BackGroundShell.startup.Checked = true;
                 BackGroundShell.startupc.Checked = false;
@@ -197,12 +197,12 @@ namespace Sakuya_Aki
         {
             if (hung > 60)
             {
-                mainwindow.pictooltip("萌萌的桜");
+                mainwindow.pictooltip("萌萌的Aki");
                 mainwindow.picway = -1;
             }
             else if (hung > 40 && hung < 60)
             {
-                mainwindow.pictooltip("桜饿了，快给我投食吧");
+                mainwindow.pictooltip("Aki饿了，快给我投食吧");
                 mainwindow.picmove("enable");
             }
             else if(hung > 20 && hung < 40)
@@ -211,7 +211,7 @@ namespace Sakuya_Aki
             }
             else if (hung < 20)
             {
-                mainwindow.pictooltip("桜要饿死了");
+                mainwindow.pictooltip("Aki要饿死了");
                 mainwindow.picmove("disable");
                 mainwindow.picway = 34;
             }
@@ -277,7 +277,7 @@ namespace Sakuya_Aki
         {
             if (hung > 80)
             {
-                mainwindow.statehung = "萌萌的桜酱";
+                mainwindow.statehung = "萌萌的Aki酱";
             }
             else if (hung > 60 && hung < 80)
             {

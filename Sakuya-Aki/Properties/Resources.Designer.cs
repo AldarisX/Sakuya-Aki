@@ -79,27 +79,27 @@ namespace Sakuya_Aki.Properties {
         ///    这里就是提示了
         ///    &lt;tip&gt;
         ///      提示的对话
-        ///      &lt;str&gt;&quot;使用桜时，请离屏幕30公分&quot;&lt;/str&gt;
+        ///      &lt;str&gt;&quot;使用Aki时，请离屏幕30公分&quot;&lt;/str&gt;
         ///      提示显示的时间，默认2000毫秒（可以不写下面一行）
         ///      &lt;t&gt;5000&lt;/t&gt;
         ///    &lt;/tip&gt;
         ///    &lt;tip&gt;
-        ///      &lt;str&gt;&quot;使用桜时，双手请放在键盘上&quot;&lt;/str&gt;
+        ///      &lt;str&gt;&quot;使用Aki时，双手请放在键盘上&quot;&lt;/str&gt;
         ///    &lt;/tip&gt;
         ///    &lt;tip&gt;
         ///      &lt;str&gt;&quot;屏幕有毒哦&quot;&lt;/str&gt;
         ///    &lt;/tip&gt;
         ///    &lt;tip&gt;
-        ///      &lt;str&gt;&quot;不好好对桜,桜是不会和你玩的（￣へ￣）&quot;&lt;/str&gt;
+        ///      &lt;str&gt;&quot;不好好对Aki,Aki是不会和你玩的（￣へ￣）&quot;&lt;/str&gt;
         ///    &lt;/tip&gt;
         ///  &lt;/level&gt;--&gt;
         ///
         ///  &lt;level&gt;
         ///    &lt;tip&gt;
-        ///      &lt;str&gt;&quot;使用桜时，请离屏幕30公分&quot;&lt;/str&gt;
+        ///      &lt;str&gt;&quot;使用Aki时，请离屏幕30公分&quot;&lt;/str&gt;
         ///    &lt;/tip&gt;
         ///    &lt;tip&gt;
-        ///      &lt;str&gt;&quot;使用桜时，双手 [字符串的其余部分被截断]&quot;; 的本地化字符串。
+        ///      &lt;str&gt;&quot;使用Aki时，双手 [字符串的其余部分被截断]&quot;; 的本地化字符串。
         /// </summary>
         internal static string tips {
             get {

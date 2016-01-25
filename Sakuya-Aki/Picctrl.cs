@@ -605,6 +605,9 @@ namespace Sakuya_Aki
             catch
             {
                 imgctrl.Suspend();
+                //nnnnnnnnnnnnn
+                imgctrl.Abort();
+                imgctrl.Join();
             }
             Image pic = mainwindow.pic;
             pic.IsHitTestVisible = false;

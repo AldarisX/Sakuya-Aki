@@ -15,6 +15,7 @@ namespace Sakuya_Aki
     {
         //名字
         public string name = "Aki";
+        public string programname = "Sakuya-Aki";
         //颜色 Aki红FF9393 255, 147, 147
         public byte colorR = 255;
         public byte colorG = 147;
@@ -367,7 +368,7 @@ namespace Sakuya_Aki
                     canvas.Children.Remove(TB);
                     canvas.Children.Remove(Busure);
                     canvas.Children.Remove(Bucancle);
-                    displaytips("桜记住了哦", 2000);
+                    displaytips("Aki记住了哦", 2000);
                     pic.Width = size * scale;
                     pic.Height = size * scale;
                     tip.FontSize = scale * swidth * sheight * 0.00001;

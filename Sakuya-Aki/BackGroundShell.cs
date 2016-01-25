@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Threading;
-using Microsoft.Win32;
 
 namespace Sakuya_Aki
 {
@@ -33,7 +32,7 @@ namespace Sakuya_Aki
         {
             BeginTime = DateTime.Now;
             //设置托盘的各个属性
-            notifyIcon.BalloonTipText = "桜来了";
+            notifyIcon.BalloonTipText = "Aki来了";
             notifyIcon.Text = Convert.ToString(mainwindow.statecleaner) + Convert.ToString(mainwindow.statehung);
             //notifyIcon.Icon = new Icon(System.Windows.Forms.Application.StartupPath + "/icon.ico");
             notifyIcon.Icon = Properties.Resources.icon;
@@ -52,7 +51,7 @@ namespace Sakuya_Aki
             alladd.Click += new EventHandler(Addall);
             System.Windows.Forms.MenuItem admin = new System.Windows.Forms.MenuItem("恢复初始值");
             admin.Click += new EventHandler(resetstate);
-            System.Windows.Forms.MenuItem menu = new System.Windows.Forms.MenuItem("给桜酱投食", new System.Windows.Forms.MenuItem[] { skladd, hungadd, cleaneradd, alladd, admin });
+            System.Windows.Forms.MenuItem menu = new System.Windows.Forms.MenuItem("给Aki酱投食", new System.Windows.Forms.MenuItem[] { skladd, hungadd, cleaneradd, alladd, admin });
 
             //时间提醒的菜单项
             System.Windows.Forms.MenuItem warnlunchtime = new System.Windows.Forms.MenuItem("设定吃午饭时间");
@@ -95,9 +94,9 @@ namespace Sakuya_Aki
             System.Windows.Forms.MenuItem StartUpMenu = new System.Windows.Forms.MenuItem("开机启动", new System.Windows.Forms.MenuItem[] { startup ,startupc});
 
             //设置设置菜单项
-            System.Windows.Forms.MenuItem aboutme = new System.Windows.Forms.MenuItem("关于桜祈");
+            System.Windows.Forms.MenuItem aboutme = new System.Windows.Forms.MenuItem("关于Aki祈");
             aboutme.Click += new EventHandler(AboutMe);
-            System.Windows.Forms.MenuItem reset = new System.Windows.Forms.MenuItem("重置桌桜酱的位置");
+            System.Windows.Forms.MenuItem reset = new System.Windows.Forms.MenuItem("重置桌Aki酱的位置");
             reset.Click += new EventHandler(resetPic);
             picmove.Checked = false;
             picmove.Click += new EventHandler(picmovechange);
@@ -108,7 +107,7 @@ namespace Sakuya_Aki
             //设置单菜单项
             System.Windows.Forms.MenuItem exit = new System.Windows.Forms.MenuItem("退出");
             exit.Click += new EventHandler(exit_Click);
-            System.Windows.Forms.MenuItem loadxxx = new System.Windows.Forms.MenuItem("查看桜酱的状态");
+            System.Windows.Forms.MenuItem loadxxx = new System.Windows.Forms.MenuItem("查看Aki酱的状态");
             loadxxx.Click += new EventHandler(loadstate);
 
             //关联托盘控件
@@ -126,7 +125,7 @@ namespace Sakuya_Aki
         }
         private void exit_Click(object sender, EventArgs e)
         {
-            if (System.Windows.MessageBox.Show("要抛弃桜了吗?",
+            if (System.Windows.MessageBox.Show("要抛弃Aki了吗?",
                                                "退出",
                                                 MessageBoxButton.YesNo,
                                                 MessageBoxImage.Question,
@@ -165,7 +164,7 @@ namespace Sakuya_Aki
             TimeSpan RunTime = new TimeSpan();
             RunTime = EndTime.Subtract(BeginTime);
             state = Convert.ToString(mainwindow.statecleaner) + Convert.ToString(mainwindow.statehung) + "\n";
-            string runtime = "桜酱卖了" + Convert.ToString(RunTime);
+            string runtime = "Aki酱卖了" + Convert.ToString(RunTime);
             string skl = "\n好感度：" + Convert.ToString(mainwindow.skl);
             string hung = "\n饥饿度：" + Convert.ToString(mainwindow.hung);
             string cleaner = "\n清洁度：" + Convert.ToString(mainwindow.cleaner);
@@ -309,7 +308,7 @@ namespace Sakuya_Aki
             rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
             string command = @"""" + Process.GetCurrentProcess().MainModule.FileName + @"""";
-            rsg.SetValue("Sakuya-Aki", command);
+            rsg.SetValue(mainwindow.programname, command);
             mainwindow.displaytips("已经设定好了哦", 2000);
             startup.Checked = true;
             startupc.Checked = false;
@@ -318,7 +317,7 @@ namespace Sakuya_Aki
         {
             rsg = Registry.LocalMachine.CreateSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\");
             rsg = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\", true);
-            rsg.DeleteValue("Sakuya-Aki");
+            rsg.DeleteValue(mainwindow.programname);
             mainwindow.displaytips("已经取消了哦", 2000);
             startup.Checked = false;
             startupc.Checked = true;
