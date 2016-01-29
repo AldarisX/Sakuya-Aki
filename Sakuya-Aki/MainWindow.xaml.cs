@@ -159,7 +159,8 @@ namespace Sakuya_Aki
         {
             statectrl.regupdate("skl", 10);
             SklUp();
-        }//WPF右键菜单状态的触发
+        }
+		//WPF右键菜单状态的触发
         private void HungAdd(object sender, RoutedEventArgs e)
         {
             statectrl.regupdate("hung", 10);
@@ -194,7 +195,8 @@ namespace Sakuya_Aki
         {
             actionzc.Game0(num);
             SklUp();
-        }//WPF右键菜单游戏的触发
+        }
+		//WPF右键菜单游戏的触发
         private void picmovechange(object sender, RoutedEventArgs e)
         {
             //如果没有开启禁止移动

@@ -41,7 +41,7 @@ namespace Sakuya_Aki
             timecheck.Interval = new TimeSpan(0, 1, 0);
             timecheck.Start();
             tipscheck.Tick += new EventHandler(sometips);
-            tipscheck.Interval = new TimeSpan(0, 0, 5);
+            tipscheck.Interval = new TimeSpan(0, 0, 31);
             tipscheck.Start();
             tipsupdate.Tick += new EventHandler(tipxyupdate);
             tipsupdate.Interval = new TimeSpan(0, 0, 0, 0, 10);
