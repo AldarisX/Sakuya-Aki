@@ -4,9 +4,9 @@ namespace Sakuya_Aki
 {
     class ActionZC
     {
-        MainWindow mainwindow;
+        iFrame mainwindow;
 
-        public ActionZC(MainWindow mainwindow)
+        public ActionZC(iFrame mainwindow)
         {
             this.mainwindow = mainwindow;
         }

@@ -8,7 +8,7 @@ namespace Sakuya_Aki
 {
     class Picctrl
     {
-        MainWindow mainwindow;
+        iFrame mainwindow;
         //pic大小为窗体的56.25x
         //设定线程暂停时间
         private static int sleeptime = 500;
@@ -30,7 +30,7 @@ namespace Sakuya_Aki
         private byte skldown = 0;
         public bool picisMove = true;
 
-        public Picctrl(MainWindow mainwindow)
+        public Picctrl(iFrame mainwindow)
         {
             this.mainwindow = mainwindow;
         }

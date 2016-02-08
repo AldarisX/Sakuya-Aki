@@ -7,7 +7,7 @@ namespace Sakuya_Aki
 {
     class Statectrl
     {
-        MainWindow mainwindow;
+        iFrame mainwindow;
         RegistryKey rsg = null;
         //好感度
         private int skl;
@@ -23,7 +23,7 @@ namespace Sakuya_Aki
         private DispatcherTimer cleanert = new DispatcherTimer();
         private DispatcherTimer checkstate = new DispatcherTimer();
 
-        public Statectrl(MainWindow mainwindow)
+        public Statectrl(iFrame mainwindow)
         {
             this.mainwindow = mainwindow;
         }

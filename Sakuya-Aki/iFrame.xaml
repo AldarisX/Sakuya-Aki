@@ -1,4 +1,4 @@
-﻿<Window x:Name="Sakuya" x:Class="Sakuya_Aki.MainWindow"
+﻿<Window x:Name="Sakuya" x:Class="Sakuya_Aki.iFrame"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ibehavior="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"

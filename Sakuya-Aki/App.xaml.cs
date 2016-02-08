@@ -67,7 +67,7 @@ namespace Sakuya_Aki
             {
                 //如果是管理员，则直接运行
 
-                StartupUri = new Uri("MainWindow.xaml", UriKind.RelativeOrAbsolute);
+                StartupUri = new Uri("iFrame.xaml", UriKind.RelativeOrAbsolute);
             }
             else
             {

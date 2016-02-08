@@ -11,7 +11,7 @@ namespace Sakuya_Aki
     /// <summary>
     /// MainWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class iFrame : Window
     {
         //名字
         public string name = "Aki";
@@ -68,16 +68,18 @@ namespace Sakuya_Aki
         //强制控制图片
         public int picway = -1;
 
-        public MainWindow()
+        public iFrame()
         {
             InitializeComponent();
-            bgshell = new BackGroundShell(this);
-            picctrl = new Picctrl(this);
-            statectrl = new Statectrl(this);
-            actionzc = new ActionZC(this);
-            tips = new Tips(this);
+           
             try
             {
+                bgshell = new BackGroundShell(this);
+                picctrl = new Picctrl(this);
+                statectrl = new Statectrl(this);
+                actionzc = new ActionZC(this);
+                tips = new Tips(this);
+
                 //设定窗体的宽高
                 Width = swidth;
                 Height = sheight;

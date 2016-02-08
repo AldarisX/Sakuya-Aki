@@ -11,7 +11,7 @@ namespace Sakuya_Aki
 {
     class Tips
     {
-        MainWindow mainwindow;
+        iFrame mainwindow;
         Task tips;
         private string tipcon;
         private int dt;
@@ -23,7 +23,7 @@ namespace Sakuya_Aki
         private int backhour = DateTime.Now.Hour;
         Random rd = new Random();
 
-        public Tips(MainWindow mainwindow)
+        public Tips(iFrame mainwindow)
         {
             this.mainwindow = mainwindow;
         }
@@ -67,12 +67,12 @@ namespace Sakuya_Aki
                 tip.Foreground = new SolidColorBrush(Color.FromRgb(mainwindow.colorR, mainwindow.colorG, mainwindow.colorB));
                 tip.FontSize = mainwindow.scale * mainwindow.swidth * mainwindow.sheight * 0.00001;
                 tip.Content = tipcon;
-                MainWindow.doevents();
+                iFrame.doevents();
                 tipxy(tipcon);
                 tip.SetValue(Canvas.LeftProperty, mainwindow.tipx);
                 tip.SetValue(Canvas.TopProperty, mainwindow.tipy);
                 tip.Visibility = Visibility.Visible;
-                MainWindow.doevents();
+                iFrame.doevents();
             });
             //这里分开是因为.Dispatcher.Invoke里是主线程
             Thread.Sleep(dt);

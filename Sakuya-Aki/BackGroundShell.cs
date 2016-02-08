@@ -11,7 +11,7 @@ namespace Sakuya_Aki
     class BackGroundShell
     {
         //用WF撸托盘
-        MainWindow mainwindow;
+        iFrame mainwindow;
         NotifyIcon notifyIcon = new NotifyIcon();
         private string state;
         private DateTime BeginTime;
@@ -24,7 +24,7 @@ namespace Sakuya_Aki
         public static System.Windows.Forms.MenuItem startup = new System.Windows.Forms.MenuItem("开启");
         public static System.Windows.Forms.MenuItem startupc = new System.Windows.Forms.MenuItem("关闭");
         
-        public BackGroundShell(MainWindow mainwindow)
+        public BackGroundShell(iFrame mainwindow)
         {
             this.mainwindow = mainwindow;
         }
@@ -328,7 +328,7 @@ namespace Sakuya_Aki
             mainwindow.pic.Width = mainwindow.size * mainwindow.scale;
             mainwindow.pic.Height = mainwindow.size * mainwindow.scale;
             mainwindow.regset("scale", level);
-            MainWindow.doevents();
+            iFrame.doevents();
             mainwindow.displaytips("已经换好了哦", 5000);
         }
         public void notifystateupdate(object sender, EventArgs e)
