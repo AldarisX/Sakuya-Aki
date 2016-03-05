@@ -11,6 +11,7 @@ namespace Sakuya_Aki
     /// </summary>
     public partial class App : Application
     {
+        /// <summary>
         /// 检查是否是管理员身份
         /// </summary>
         private void CheckAdministrator()
